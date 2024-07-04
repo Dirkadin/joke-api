@@ -6,7 +6,8 @@
                 "ms-python.python",
                 "oderwat.indent-rainbow",
                 "albert.TabOut",
-                "esbenp.prettier-vscode"
+                "esbenp.prettier-vscode",
+                "rangav.vscode-thunder-client"
             ]
         }
     },
