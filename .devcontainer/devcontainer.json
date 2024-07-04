@@ -5,6 +5,7 @@
             "extensions": [
                 "ms-python.python",
                 "oderwat.indent-rainbow",
+                "albert.TabOut",
                 "esbenp.prettier-vscode"
             ]
         }
