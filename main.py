@@ -1,21 +1,19 @@
 import json
 import random
 from typing import List
-from uuid import UUID
+from uuid import UUID, uuid4
 from fastapi import FastAPI, HTTPException
-from models import Joke, JokeType
+from models import Joke
 
 app = FastAPI()
 
 db: List[Joke] = []
 
-d = json.load(open('jokes.json'))
-for joke in d:
-    db.append(Joke(
-        type=JokeType(joke["type"]),
-        setup=joke["setup"],
-        punchline=joke["punchline"]
-    ))
+d = json.load(open("jokes.json"))
+for joke_json in d:
+    joke = Joke.model_validate(joke_json)
+    joke.id = uuid4()
+    db.append(joke)
 
 
 @app.get("/api/v1/jokes")
