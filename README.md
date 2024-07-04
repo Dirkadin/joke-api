@@ -1,1 +1,7 @@
-Development run command `uvicorn main:app --reload`
+## Development
+
+- Run command `uvicorn main:app --reload`
+
+## APIs
+
+- GET /api/v1/jokes
