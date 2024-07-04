@@ -5,13 +5,14 @@ from pydantic import BaseModel
 
 
 class JokeType(str, Enum):
-    joke = "joke"
-    groaner = "groaner"
-    dad_joke = "dad joke"
+    general = "general"
+    knock_knock = "knock-knock"
+    programming = "programming"
+    dad = "dad"
 
 
 class Joke(BaseModel):
     id: UUID = uuid4()
+    type: str
     setup: str
-    punch_line: str
-    joke_type: JokeType
+    punchline: str

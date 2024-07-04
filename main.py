@@ -1,3 +1,5 @@
+import json
+import random
 from typing import List
 from uuid import UUID
 from fastapi import FastAPI, HTTPException
@@ -5,18 +7,26 @@ from models import Joke, JokeType
 
 app = FastAPI()
 
-db: List[Joke] = [
-    Joke(
-        setup="foo",
-        punch_line="bar",
-        joke_type=JokeType.groaner
-    )
-]
+db: List[Joke] = []
+
+d = json.load(open('jokes.json'))
+for joke in d:
+    db.append(Joke(
+        type=JokeType(joke["type"]),
+        setup=joke["setup"],
+        punchline=joke["punchline"]
+    ))
 
 
 @app.get("/api/v1/jokes")
 def fetch_jokes():
     return db
+
+
+@app.get("/api/v1/jokes/random")
+def random_joke():
+    random_number = random.randrange(0, len(db) - 1, 1)
+    return db[random_number]
 
 
 @app.post("/api/v1/jokes")
