@@ -1,12 +1,8 @@
 {
+  "name": "joke-api",
   "image": "mcr.microsoft.com/vscode/devcontainers/python:3.10",
   "customizations": {
     "vscode": {
-      "settings": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.detectIndentation": false
-      },
       "extensions": [
         "ms-python.python",
         "oderwat.indent-rainbow",
